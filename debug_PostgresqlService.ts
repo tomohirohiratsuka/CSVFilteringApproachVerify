@@ -40,7 +40,11 @@ const postgresqlService = new PostgresqlService();
 /**
  * Postgres Search performance
  */
-
+// Postgres Search Time: 0.004, Rows: 100
+// Postgres Search Time: 0.001, Rows: 1000
+// Postgres Search Time: 0.005, Rows: 10000
+// Postgres Search Time: 0.045, Rows: 100000
+// Postgres Search Time: 3.088, Rows: 1000000
 (async () => {
     const client = await postgresqlService.initClient();
     await postgresqlService.createTableAndIndexes(client);
