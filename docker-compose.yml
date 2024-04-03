@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  db:
+    image: postgres:12
+    restart: always
+    container_name: db
+    user: postgres
+    env_file: .env
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - node_sqlite_debug_postgres:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    healthcheck:
+      test: pg_isready
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+    node_sqlite_debug_postgres:
